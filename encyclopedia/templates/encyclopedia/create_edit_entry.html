@@ -1,0 +1,68 @@
+{% extends "encyclopedia/layout.html" %}
+ {% block title %} Encyclopedia {% endblock title %} 
+ {% block body %}
+
+<div class="container">
+	<div class="header mt-3 text-uppercase text-secondary">
+		{% if config and config == "edit" %}
+		<h1 class="text-center">Edit Markdown</h1>
+		{% else %}
+		<h1 class="text-center">Create Your Markdown</h1>
+		{% endif %}
+	</div>
+	<hr />
+	<div class="entry-wrapper">
+		<!-- Form Content -->
+		<form class="edit-form my-2" action="/save-entry/" method="post">
+			{% csrf_token %}
+			<h2 class="my-3">{{title}}</h2>
+			<div class="form-group pt-3">
+				<label class="entry-label" for="title">
+					{% if config and config == "create" %} 
+					Create a title 
+					{% else %} 
+					Edit title 
+					{% endif %} 
+					</label><br />
+				<input id="title" type="text" name="title" value="{{title|safe}}" />
+			</div>
+
+			<div class="form-group my-4">
+				<label class="entry-label" for="content">
+					{% if config and config == "create" %}
+					 Create content 
+					 {% else %}
+					  Edit content 
+					{% endif %} 
+					</label><br/>
+				<textarea class="px-2 my-2" style="height: auto" name="content" id="content"
+					height="auto" cols="40" rows="10" value="{{ entry|safe }}" > {{entry|safe}}
+				</textarea >
+			</div>
+			<div class="navigation header align-items-center d-flex">
+				<ul class="nav-links-wrapper d-flex">
+					<li class="nav-item">
+						<input role="button" type="submit" value="Submit Entry" class="btn btn-outline-warning" />
+					</li>
+					<li class="nav-item">
+						{% if config == "create" %} {# Cancel create - go back to home #}
+						<a class="link" href="{% url 'index' %}">
+							<button class="mx-2 btn px-4 btn-outline-success">
+								cancel 
+							</button>
+						</a>
+						{% else %} {# Cancel edit - go back to entry #}
+						<a class="link" href="{% url 'wiki_entry' title %}">
+							<button class="mx-2 btn px-4 btn-outline-success">
+								cancel
+							</button>
+						</a>
+						{% endif %}
+					</li>
+				</ul>
+			</div>
+		</form>
+	</div>
+	<!-- Entry Content -->
+</div>
+{% endblock %}

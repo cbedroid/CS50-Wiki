@@ -1,0 +1,42 @@
+{% extends "encyclopedia/layout.html" %} 
+{% block title %} Encyclopedia {% endblock %} 
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-9">
+			<!-- Navigation control-->
+			<div class="navigation header align-items-center d-flex mt-2">
+				<ul class="nav-list d-flex ml-3 pt-5">
+					<!-- Home -->
+				<li class="nav-item">
+						<a class="link" href="{% url 'index' %}">
+							<button class="mx-2 btn px-4 btn-outline-success">
+								Home
+							</button>
+						</a>
+					</li>
+					<!-- Edit Entry-->
+					<li class="nav-item">
+						<a class="link" href="{% url 'edit_entry' title %}">
+							<button class="btn btn-outline-warning">Edit Entry</button>
+						</a>
+					</li>
+					<!-- Delete Entry-->
+					<li class="nav-item">
+						<a class="link" href="{% url 'delete_entry' title %}">
+							<button class="btn btn-outline-danger">DeleteEntry</button>
+						</a>
+					</li>
+					
+					
+				</ul>
+			</div>
+			<!-- Navigation control-->
+		</div>
+	</div>
+
+	<!-- Entry Content -->
+	<div class="entry-wrapper">{{ entry|safe }}</div>
+	<!-- Entry Content -->
+</div>
+{% endblock %}

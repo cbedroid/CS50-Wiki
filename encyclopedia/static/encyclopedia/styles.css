@@ -1,0 +1,111 @@
+body {
+	margin: 0;
+	background-color: white;
+	overflow-x: hidden;
+}
+
+code {
+	white-space: pre;
+}
+
+h1 {
+	margin-top: 0px;
+	padding-top: 20px;
+}
+
+textarea {
+	height: 90vh;
+	width: 80%;
+}
+
+.main {
+	padding: 10px;
+}
+
+.search {
+	width: 100%;
+	font-size: 15px;
+	line-height: 15px;
+	padding: 5px 7px;
+}
+
+.sidebar {
+	background-color: #f0f0f0;
+	height: 100vh;
+	padding: 20px;
+}
+
+.sidebar h2 {
+	margin-top: 5px;
+}
+
+ul {
+	padding: 0;
+}
+
+ul li {
+	list-style: none;
+}
+
+.title {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.content {
+	font-family: serif;
+}
+
+.bg-whitesmoke {
+	background: whitesmoke;
+}
+
+.form-group input,
+.form-group textarea {
+	border: 1px solid #c1c1c1;
+	border-radius: 3px;
+	transition: 0.3s ease-in-out;
+}
+
+.form-group:hover input,
+.form-group:hover textarea {
+	border: 1px solid #555;
+	border-radius: 3px;
+}
+
+
+.nav-list .nav-item{
+	margin: 0 7px;
+}
+.link {
+	text-decoration: none;
+}
+.link:hover {
+	text-decoration: none !important;
+}
+
+.entry-wrapper {
+	margin: 0 auto;
+}
+.entry-label {
+	text-align: left;
+	font-weight: 600;
+	color: #202122;
+}
+
+
+.deletion-modal{
+	position: absolute;
+	top: 25%;
+	left:0;
+	display: block;
+	margin: 0 auto;
+	background: rgba(255,255,255,.3);
+	width: 75%;
+	height: 400px;
+	text-align: center;
+	transition: .3s ease-in-out;
+	box-shadow: 2px 2px 32px rgba(0,0,0,3);
+	border-radius: 7px;
+}
+.deletion-modal .jumbotron{
+	background: transparent;
+}

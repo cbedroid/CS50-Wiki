@@ -1,0 +1,24 @@
+
+{% extends "encyclopedia/layout.html" %}
+{% block title %}
+  Delete Entry
+{% endblock title %}
+
+{% block body %}
+<div class="deletion-modal modal">
+  <div class="jumbotron">
+    <div class="header">
+      <h1 class="text-center font-weight-bolder">
+        Are You Sure You Want To Delete {{title|title}}
+      </h1>
+    </div>
+    <form class="form-dialog my-5" action="" method="POST">
+     {% csrf_token %}
+     <label for="yes"> </label>
+     <input type="submit" role="button" name="deletion" class="btn btn-danger btn-lg" value="yes">
+     <label for="no"></label>
+     <input type="submit" role="button" name="deletion" class="btn btn-success btn-lg" value="no">
+    </form>
+  </div>
+</div>
+{% endblock body %}
