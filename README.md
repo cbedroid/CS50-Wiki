@@ -21,7 +21,7 @@ Here are some of the tool used in this project.
 - Django
 - HTML
 - CSS
-- Javscript
+- Javascript
 - Bootstrap 4
 ---
 
