@@ -8,7 +8,7 @@ Wiki - Wikipedia-like online encyclopedia
 
 Hello :wave: and welcome to my CS50 Wiki Project. Feel free to roam around and checkout some of the cool features in this repository. 
 
- ## So..what is this Wiki thing you keep babbing about :thinking: ?
+ ## So..what is this Wiki thing you keep babbling about :thinking: ?
 
   This **Wiki** thing.. is a `wikipedia-like` online encyclopedia that consists of numerous interesting enclopedia entries on various different topic. [Wikipedia](https://wikipedia.org) is open-sourced allowing any volunteer to created and edited its entries. It's the 15 most popular website in the world .... oh yeah.. did I mention, It also **FREE**. 
 
