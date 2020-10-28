@@ -5,12 +5,41 @@
 {% endblock title %}
 
 {% block body %}
-<div class="deletion-modal modal">
+<div class="modal fade" id="deletion_modal" tabindex="-1" role="dialog" aria-labelledby="deletion_modal_label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-danger">
+        <h2 class="font-weight-bolder text-center w-100  modal-title" id="deletion_modal_label">Delete Entry</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <h3 class="text-secondary"> Are you sure you want to delete </h3>
+        <h2 class="mt-3">{{title|title}}</h2>
+      </div>
+      <div class="modal-footer">
+        <form class="form-dialog" action="" method="POST">
+        {% csrf_token %}
+          <button type="submit" class="btn btn-secondary font-weight-bold">cancel
+          <input type="hidden" name="deletion" value="no">
+          </button>
+          <button type="submit" class="btn btn-danger font-weight-bold">yes, delete it
+           <input type="hidden" name="deletion" value="yes">
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% comment %} <div class="deletion-modal modal">
   <div class="jumbotron">
     <div class="header">
       <h1 class="text-center font-weight-bolder">
-        Are You Sure You Want To Delete {{title|title}}
+        Are You Sure You Want To Delete 
       </h1>
+      <h2 class="py-3 bg-dark text-light">{{title|title}}</h2>
     </div>
     <form class="form-dialog my-5" action="" method="POST">
      {% csrf_token %}
@@ -20,5 +49,5 @@
      <input type="submit" role="button" name="deletion" class="btn btn-success btn-lg" value="no">
     </form>
   </div>
-</div>
+</div> {% endcomment %}
 {% endblock body %}

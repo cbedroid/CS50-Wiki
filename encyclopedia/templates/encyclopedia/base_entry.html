@@ -24,8 +24,17 @@
 					<!-- Delete Entry-->
 					<li class="nav-item">
 						<a class="link" href="{% url 'delete_entry' title %}">
-							<button class="btn btn-outline-danger">DeleteEntry</button>
+							<button id="delete_btn" class="btn btn-outline-danger">DeleteEntry</button>
 						</a>
+						{% verbatim  %}
+						<script>
+							document.getElementById('delete_btn').addEventListener('click',function(){
+									document.getElementById('deletion_modal').css.display ="block"
+
+							})
+						</script>
+						{% endverbatim  %}
+
 					</li>
 					
 					
