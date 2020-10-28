@@ -6,13 +6,16 @@ Wiki - Wikipedia-like online encyclopedia
 
 # Introduction
 
-Hello :wave: and welcome to my CS50 Wiki Project. Feel free to roam around and checkout some of the cool features in this repository. 
+Hello :wave: and welcome to my **CS50 Wiki Project**. Feel free to roam around and checkout some of the cool features in this repository. 
+
+In this project, our class were instructed to create a similiar clone website like **Wikipedia**  named **Wiki** using **Python's Django Framework**. 
+
+For details on the `Specification` for this project, Please take a look at the [**Specification**](#specification) section below.
+
 
  ## So..what is this Wiki thing you keep babbling about :thinking: ?
 
-  This **Wiki** thing.. is a `wikipedia-like` online encyclopedia that consists of numerous interesting enclopedia entries on various different topic. [Wikipedia](https://wikipedia.org) is open-sourced allowing any volunteer to created and edited its entries. It's the 15 most popular website in the world .... oh yeah.. did I mention, It also **FREE**. 
-
-In this project, our class were instructed to create a similiar clone website like **Wikipedia**  named **Wiki** using **Python's Django Framework**. For details on the `Specification` for the project, Please take a look at the [**Specification**](#specification) section below.
+  This **Wiki** thing.. is a `wikipedia-like` online encyclopedia that consists of numerous interesting encyclopedia entries on various different topic. [Wikipedia](https://wikipedia.org) is open-sourced allowing any volunteer to created and edited its entries. It's the 15 most popular website in the world .... oh yeah.. did I mention, Its also **FREE**. 
 
 ---
 # TechStack
@@ -41,7 +44,7 @@ Here are some of the tool used in this project.
 - **Setup up virtual environment**
  ``` bash
    
-   # if virtualenv is not installed on your system. skip if already installled
+   # if virtualenv is already installed on your system, skip this step here 
    apt-get install virtualenv 
 
    # setup virtual env
