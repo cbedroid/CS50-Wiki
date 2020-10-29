@@ -1,15 +1,17 @@
 {% extends "encyclopedia/layout.html" %} 
 {% block title %} Encyclopedia {% endblock %} 
 {% block body %}
-<div class="start-page px-3">
-	<h1>All Pages</h1>
-	<ul>
-		{% for entry in entries %}
-		<li class="p-1">
-			{# entry title and url #}
-			<a href="{% url 'wiki_entry' entry %}"> {{ entry }} </a>
-		</li>
-		{% endfor %}
-	</ul>
-</div>
+<section>
+	<div class="start-page px-3">
+		<h1>All Pages</h1>
+		<ul>
+			{% for entry in entries %}
+			<li class="p-1">
+				{# entry title and url #}
+				<a href="{% url 'wiki_entry' entry %}"> {{ entry }} </a>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>
 {% endblock %}

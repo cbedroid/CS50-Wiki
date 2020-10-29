@@ -1,5 +1,6 @@
-import markdown2
+import re
 import random
+import markdown2
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -35,6 +36,7 @@ def wiki_entry(request, title):
     entry_list = util.list_entries()
 
     # Filter the title  with case-insensitive search
+    title = title.strip()
     wiki = [entry for entry in entry_list if title.lower() in entry.lower()]
 
     if not wiki or wiki is None:
@@ -64,49 +66,7 @@ def wiki_search(request, search):
     return wiki_entry(request, title=search)
 
 
-def create_entry(request):
-    """Create a Wiki entry
-
-    Arguments:
-        request {obj} -- Django request
-    Returns:
-        [Django view] -- rendered view template   'create-entry/'
-    """
-    context = {
-        "config": "create",
-        "title": "",
-        "entry": "",
-        "unavailable_entry": util.list_entries(),
-    }
-    return render(request, "encyclopedia/create_edit_entry.html", context)
-
-
-def edit_entry(request, title):
-    """Update Wiki entry
-
-    Arguments:
-        request {obj} -- Django request
-        title {str} -- Name of Wiki entry to update
-
-    Returns:
-        [Django view] -- rendered view template 'edit-entry/'
-    """
-    # This view handle creating and saving entries
-    entry = util.get_entry(title)
-    if not entry or entry is None:
-        return redirect("notfound")
-
-    # convert entry from html to Markdown
-    context = {
-    "title": title,
-    "entry": entry,
-    "config":"edit",
-    "unavailable_entry": util.list_entries()
-    }
-    return render(request, "encyclopedia/create_edit_entry.html", context)
-
-
-def save_entry(request):
+def handler_save(request, **kwargs):
     """Save Entry
 
     Arguments:
@@ -116,20 +76,73 @@ def save_entry(request):
         [Django redirect] -- redirect view   'index/' or 'wiki/<title>'
     """
     # This view handle saving new and edit entries
+    # title = request.POST.get("title")
+    # content = request.POST.get("content")
+    # Save entry
+    title = kwargs.get("title", "")
+    content = kwargs.get("content", "")
+    if content and title:
+        title = re.sub(r"\s", "_", title.strip())
+        entry = util.save_entry(title.strip(), str(content).strip())
+        referred_message(request, "edit", f"{title} was updated successfully")
+        return redirect("wiki_entry", title=title)
 
-    if request.method == "POST":
-        title = request.POST.get("title")
-        content = request.POST.get("content")
-
-        # Save entry
-        if content and title:
-            entry = util.save_entry(title, str(content).strip())
-            referred_message(
-                request, "create", f"Your entry {title}  was created successfully"
-            )
-            referred_message(request, "edit", f"{title} was updated successfully")
-            return redirect(reverse("wiki_entry", kwargs={"title": title}))
     return redirect("notfound")
+
+
+def update_entry(request, title=""):
+    """Update Wiki entry
+
+    Arguments:
+        request {obj} -- Django request
+        title {str} -- Name of Wiki entry to update
+
+    Returns:
+        [Django view] -- rendered view template 'edit-entry/'
+    """
+
+    context = {"config": "create"}
+    if request.method == "POST":
+        title = request.POST.get("title", "").strip()
+        content = request.POST.get("content", "").strip()
+        submit = request.POST.get("submit")
+        hidden = request.POST.get("config")
+
+        if submit is None:
+            if "create" in hidden:
+                return redirect(index)
+            else:
+                return redirect(reverse("wiki_entry", kwargs={"title": title}))
+
+        elif not title or not content:
+            # redirect user to the same page to make changes
+            messages.warn(
+                request, f" You must add a title and content to create entry!"
+            )
+
+            return render(request, "encyclopedia/create_edit_entry.html", context)
+        # Save the entry
+        action = "created" if "edit" in hidden else "updated"
+        messages.success(request, f" Your entry was {action} successfully!")
+        print("\n\nTitle", title)
+        return handler_save(request, title=title, content=content)
+
+    else:  # GET request
+        if title:
+            entry = util.get_entry(title)
+            if not entry or entry is None:
+                return redirect("notfound")
+            context["entry"] = entry
+            context["config"] = "edit"
+
+        # convert entry from html to Markdown
+        context.update(
+            {
+                "title": title,
+                "unavailable_entry": util.list_entries(),
+            }
+        )
+    return render(request, "encyclopedia/create_edit_entry.html", context)
 
 
 def random_entry(request):
@@ -145,7 +158,6 @@ def random_entry(request):
     entry_list = util.list_entries()
     if entry_list:
         rand_entry = random.choices(entry_list)[0]
-        print("Random:", rand_entry)
         return HttpResponseRedirect(reverse("wiki_entry", args=(rand_entry,)))
 
     messages.error(request, f"Opp... Something went wrong!")

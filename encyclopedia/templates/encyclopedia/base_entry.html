@@ -1,12 +1,13 @@
 {% extends "encyclopedia/layout.html" %} 
 {% block title %} Encyclopedia {% endblock %} 
 {% block body %}
+<section class="pl-lg-3">
 <div class="container">
 	<div class="row">
 		<div class="col-9">
 			<!-- Navigation control-->
-			<div class="navigation header align-items-center d-flex mt-2">
-				<ul class="nav-list d-flex ml-3 pt-5">
+			<div class="navigation header  align-items-center d-flex mt-2">
+				<ul class="nav-list  d-flex ml-3 pt-5">
 					<!-- Home -->
 				<li class="nav-item">
 						<a class="link" href="{% url 'index' %}">
@@ -17,7 +18,7 @@
 					</li>
 					<!-- Edit Entry-->
 					<li class="nav-item">
-						<a class="link" href="{% url 'edit_entry' title %}">
+						<a class="link" href="{% url 'update_entry' title %}">
 							<button class="btn btn-outline-warning">Edit Entry</button>
 						</a>
 					</li>
@@ -45,7 +46,15 @@
 	</div>
 
 	<!-- Entry Content -->
-	<div class="entry-wrapper">{{ entry|safe }}</div>
+	<div class="entry-wrapper" style="overflow:auto">
+		<h1 class="title text-secondary font-weight-bolder">
+		{{title}}
+		</h1>
+		<hr class="mb-5">
+		<div class="content-container my-3 py-3">
+		{{ entry|safe }}
+		</div>
+	</div>
 	<!-- Entry Content -->
-</div>
+</section>
 {% endblock %}

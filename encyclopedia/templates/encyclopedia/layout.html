@@ -5,7 +5,16 @@
 
 <html lang="en">
 	<head>
-		<title>{% block title %}{% endblock %}</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Fix for mobile viewport -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<base href="/">
+
+		<title>
+		{% block title %}
+		{% endblock %}
+		</title>
 		<link
 			rel="stylesheet"
 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -16,9 +25,9 @@
 	</head>
 
 	<body>
-		<div class="row">
+		<div class="row no-gutters">
 			<div class="sidebar col-lg-2 col-md-3">
-				<div class="side-container pl-2">
+				<div class="side-container pt-3 px-2">
 				<h2 class="pl-2">Wiki</h2>
 				<form class="search-form" action="/wiki" method="GET">
 					<div class="form-group">
@@ -36,15 +45,16 @@
 						</datalist>
 					</div>
 				</form>
+				{% block nav %} 
 				<ul>
 					<li><a href="{% url 'index' %}">Home</a></li>
-					<li><a href="{% url 'create_entry' %}">Create New Page</a></li>
+					<li><a href="{% url 'update_entry' %}">Create New Page</a></li>
 					<li><a href="{% url 'random_entry' %}">Random Page</a></li>
 				</ul>
-				{% block nav %} {% endblock %}
+				{% endblock %}
 				</div>
 			</div>
-			<div class="main col-lg-10 col-md-9">
+			<div class="main col-lg-9 col-md-8">
 				<!-- Django alert message -->
 				<div class="message-wrapper w-100 z-100 position-absolute">
 					{% if messages %}
@@ -66,13 +76,13 @@
 								{% endfor %}
 						</ul>
 			{% endif %}
-		</div>
+			</div>
 
-			<main class="mt-3">
+			<div  class="main-container w-100">
 			{% block body %} 
 			{% endblock %}
-			</main>
 			</div>
+		</div>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -81,6 +91,5 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
   	integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 		<script src="{% static 'encyclopedia/main.js' %}"></script>
-		 {% comment %} <script src="http://livejs.com/live.js"></script>  {% endcomment %}
 	</body>
 </html>
