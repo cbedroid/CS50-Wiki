@@ -7,6 +7,7 @@
 
 Hello :wave: and welcome to my [**Harvard University CS50 Wiki Project**](https://online-learning.harvard.edu/course/cs50s-web-programming-python-and-javascript?delta=0). Feel free to roam around and checkout some of the cool features in this repository. In this project, our class was instructed to create a similiar clone website like **Wikipedia**  named **Wiki** using **Python's Django Framework**.  
 
+Hello :wave: and welcome to my [**Harvard University CS50 Wiki Project**](https://online-learning.harvard.edu/course/cs50s-web-programming-python-and-javascript?delta=0). Feel free to roam around and checkout some of the cool features in this repository. In this project, our class was instructed to create a similiar clone website like **Wikipedia**  named **Wiki** using **Python's Django Framework**.  
 For details on the `Specification` for this project, Please take a look at the [**Specification**](#specification) section below.
 
 
