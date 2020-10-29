@@ -76,17 +76,12 @@ def handler_save(request, **kwargs):
         [Django redirect] -- redirect view   'index/' or 'wiki/<title>'
     """
     # This view handle saving new and edit entries
-    # title = request.POST.get("title")
-    # content = request.POST.get("content")
-    # Save entry
     title = kwargs.get("title", "")
     content = kwargs.get("content", "")
     if content and title:
         title = re.sub(r"\s", "_", title.strip())
         entry = util.save_entry(title.strip(), str(content).strip())
-        referred_message(request, "edit", f"{title} was updated successfully")
         return redirect("wiki_entry", title=title)
-
     return redirect("notfound")
 
 
@@ -109,25 +104,28 @@ def update_entry(request, title=""):
         hidden = request.POST.get("config")
 
         if submit is None:
+            # User cancelled request
             if "create" in hidden:
+                # Cancelled creating - redirect to index
                 return redirect(index)
             else:
+                # Cancelled updating - redirect to wiki entry
                 return redirect(reverse("wiki_entry", kwargs={"title": title}))
-
         elif not title or not content:
-            # redirect user to the same page to make changes
+            # Submitted but no content was added.
+            # (mainly for creation since update already have content)
+            # Redirect user to the same page to make changes
             messages.warn(
                 request, f" You must add a title and content to create entry!"
             )
-
             return render(request, "encyclopedia/create_edit_entry.html", context)
-        # Save the entry
+
+        # Setup saving the entry
         action = "created" if "edit" in hidden else "updated"
         messages.success(request, f" Your entry was {action} successfully!")
-        print("\n\nTitle", title)
         return handler_save(request, title=title, content=content)
 
-    else:  # GET request
+    else:  # GET Request
         if title:
             entry = util.get_entry(title)
             if not entry or entry is None:
@@ -135,7 +133,7 @@ def update_entry(request, title=""):
             context["entry"] = entry
             context["config"] = "edit"
 
-        # convert entry from html to Markdown
+        # Convert entry from html to Markdown
         context.update(
             {
                 "title": title,
@@ -182,7 +180,6 @@ def delete_entry(request, title):
         if title:
             if deletion == "yes":
                 util.delete_entry(title)
-                # Message here
                 messages.error(request, f"{title} was deleted.")
                 return redirect("index")
             else:
