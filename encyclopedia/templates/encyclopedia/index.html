@@ -2,16 +2,68 @@
 {% block title %} Encyclopedia {% endblock %} 
 {% block body_content %}
 <section>
+	<div class="greeting-header text-center mt-2">
+		<h1 class="title font-weight-bolder text-secondary">Welcome To Wiki</h1>
+	</div>
+		<hr>
 	<div class="start-page px-3">
-		<h1>All Pages</h1>
+		<h1>Wiki Pages</h1>
+		<div class="wiki-link-containe mb-2">
+	
+		<form id="alphabet_form" action="" method="POST">
+			{% csrf_token %}
+			<ul class="wiki_links d-flex justify-content-center p-2 bg-light">
+				{% for letter in alphabet_list  %}
+					<li class="link_{{letter}} mx-1" >
+						<a class="link_anchor font-weight-bold text-primary" data-value={{letter}} href="#"  style="font-size: 22px;">
+						 {{letter}} 
+						</a>
+					</li>
+				{% endfor %}
+				<input id="abc_input" type="hidden" name="letter" value="">
+				<script>
+					let abc_form = document.getElementById('alphabet_form')
+					document.querySelectorAll('.link_anchor').forEach(function(btn){
+					btn.addEventListener('click',function(e){
+						e.preventDefault();
+						document.getElementById("abc_input").value = btn.dataset.value;
+
+						// Load spinner
+						let spinner = document.getElementById('spinner');
+						setTimeout(function(){
+							/*only show spinner if loading takes more than one sec
+							  Other wise it get annoying to users */
+							spinner.classList.remove('invisible');
+						},1000)
+						abc_form.submit();
+					})
+					})
+				</script>
+			</ul>
+		</form>
+		</div>
+		{# All avaialble Enties #}
+
+	<div id="spinner" class="invisible  position-fixed mh-100 mw-50 h-100 w-50 ">
+			<img src="https://icon-library.com/images/loading-icon-transparent-background/loading-icon-transparent-background-12.jpg" alt="loading-spinner" 
+			class="d-block  w-25 mw-25 mh-25">
+		</div>
+		<h5 class="font-weight-100">Available Entry - 
+		<span class="badge badge-secondary ">{{entries|length}}</s>
+		</h5>
 		<ul>
 			{% for entry in entries %}
 			<li class="p-1">
 				{# entry title and url #}
 				<a href="{% url 'wiki_entry' entry %}"> {{ entry }} </a>
 			</li>
+			{% empty %}
+			<li>
+			<h1 class="text-secondary text-centered "> No entry was found</h1>
+			</li>
 			{% endfor %}
 		</ul>
+
 	</div>
 </section>
 {% endblock %}

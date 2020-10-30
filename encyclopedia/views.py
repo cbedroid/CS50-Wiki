@@ -26,7 +26,20 @@ def referred_message(req, url, msg, level="success"):
 
 
 def index(request):
-    context = {"entries": util.list_entries()}
+    entry_list = util.list_entries()
+    if request.method == "POST":
+        letter = request.POST.get("letter")
+        print("Letter", letter)
+        print("\nPOST", request.POST)
+        if letter is not None:
+            # map all letter and entry to lowercase
+            letter = letter.strip().lower()
+            # filter by entries starting with "letter"
+            entry_list = list(
+                filter(lambda x: x.lower().startswith(letter), entry_list)
+            )
+    alphabet_list = list(map(chr, range(65, 65 + 26)))
+    context = {"entries": entry_list, "alphabet_list": alphabet_list}
     return render(request, "encyclopedia/index.html", context)
 
 
