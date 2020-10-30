@@ -9,6 +9,8 @@ Hello :wave: and welcome to my [**Harvard University CS50 Wiki Project**](https:
 For details on the `Specification` for this project, Please take a look at the [**Specification**](#specification) section below.
 
 
+### :rocket: Run [Wiki Live Demo](https://cbedroid-wiki.herokuapp.com/)
+
 # Introduction
 
  ## So..what is this Wiki thing you keep babbling about :thinking: ?
