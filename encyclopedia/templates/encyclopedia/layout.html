@@ -31,7 +31,9 @@
 		<div class="row no-gutters">
 			<div class="sidebar col-lg-2 col-md-3">
 				<div class="side-container pt-3 px-2">
-				<h2 class="pl-2">Wiki</h2>
+				<a  class="wiki-home text-dark text-decoration-none" href="{% url 'index' %}">
+					<h2 class="pl-2"> Wiki</h2>
+				</a>
 				<form class="search-form" action="/wiki" method="GET">
 					<div class="form-group">
 						<input
@@ -95,5 +97,7 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
   	integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 		<script src="{% static 'encyclopedia/main.js' %}"></script>
+		<script src="http://livejs.com/live.js"></script>
+		
 	</body>
 </html>
