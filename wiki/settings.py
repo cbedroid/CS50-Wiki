@@ -5,7 +5,7 @@ import mimetypes
 import django_heroku
 from dotenv import load_dotenv
 
-load_dotenv
+load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -15,7 +15,7 @@ if not SECRET_KEY:
     raise TypeError("Invalid or Missing Secret Key")
 
 
-Production = os.environ.get("WIKI_DEBUG") == True
+Production = (os.environ.get("WIKI_DEBUG") == "True")
 
 DEBUG = Production
 
@@ -79,7 +79,7 @@ if Production:
             "ENGINE": "django.db.backends.postgresql",
             "NAME": os.environ.get("WIKI_DB_NAME"),
             "USER": os.environ.get("WIKI_DB_USER"),
-            "PASSWORD": os.environ.get("WIKI_PASSWORD"),
+            "PASSWORD": os.environ.get("WIKI_DB_PASSWORD"),
             "HOST": os.environ.get("WIKI_DB_HOST"),
             "PORT": "5432",
         }
@@ -130,8 +130,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 mimetypes.add_type("text/css", ".css", True)
 django_heroku.settings(locals())
