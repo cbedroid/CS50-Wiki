@@ -41,21 +41,22 @@ Here are some of the tool used in this project.
 
 - **Clone this Repo (Wiki branch)**
   ``` bash
-   git clone --branch web50/projects/2020/x/wiki  https://github.com/me50/cbedroid.git
-
-   cd cbedroid #( if you like you can rename this folder cbedroid to 'whatever you like' )
+   git clone https://github.com/cbedroid/CS50-Wiki.git
+  
+   # Change directory into repository folder
+   cd CS50-Wiki 
   ```
 
 - **Setup up virtual environment**
  ``` bash
    
-   # if virtualenv is already installed on your system, skip this step here 
+   # If virtualenv is already installed on your system, skip this step here 
    apt-get install virtualenv 
 
-   # setup virtual env
+   # Setup virtual env
    virtualenv venv
   
-   # activate virtual env
+   # Activate virtual environment
    source venv/bin/activate
   ```
 
