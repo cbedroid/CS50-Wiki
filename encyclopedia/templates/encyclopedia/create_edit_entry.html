@@ -16,7 +16,7 @@
 				<hr />
 				<div class="entry-wrapper">
 					<!-- Form Content -->
-					<form class="edit-form my-2" action="" method="post">
+					<form  class="edit-form my-2" action="" method="post">
 						{% csrf_token %}
 						<h2 class="my-3">{{title}}</h2>
 						<div class="form-group pt-3">
@@ -43,7 +43,7 @@
 								{% endif %}
 							</label><br />
 							<textarea class="px-2 shadow-sm  my-2" style="height: auto" name="content" id="content" rows="10"
-								value="{{ entry|safe }}" required>{{entry|safe}}
+								value="{{ entry|safe }}" required>
 				</textarea>
 						</div>
 						<!--SUBMIT BUTTONS -->

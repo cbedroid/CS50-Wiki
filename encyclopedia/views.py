@@ -123,9 +123,11 @@ def update_entry(request, title=""):
         # Setup saving the entry
         action = "created" if "edit" in hidden else "updated"
         messages.success(request, f" Your entry was {action} successfully!")
+        print("\nCONTENT", content)
         return handler_save(request, title=title, content=content)
 
     else:  # GET Request
+        context = {}
         if title:
             entry = util.get_entry(title)
             if not entry or entry is None:
@@ -140,6 +142,7 @@ def update_entry(request, title=""):
                 "unavailable_entry": util.list_entries(),
             }
         )
+        print("\nCONTEXT", context)
     return render(request, "encyclopedia/create_edit_entry.html", context)
 
 
