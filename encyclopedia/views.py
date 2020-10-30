@@ -1,7 +1,7 @@
 import re
 import random
 import markdown2
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse
@@ -40,7 +40,7 @@ def wiki_entry(request, title):
     wiki = [entry for entry in entry_list if title.lower() in entry.lower()]
 
     if not wiki or wiki is None:
-        return redirect("notfound")
+        return redirect(notFound)
 
     # get Entry by its title
     entry = util.get_entry(wiki[0])
@@ -61,7 +61,7 @@ def wiki_search(request, search):
     """
     search = request.GET.get("search")
     if not search:
-        return redirect("notfound")
+        return redirect(notFound)
 
     return wiki_entry(request, title=search)
 
@@ -82,7 +82,7 @@ def handler_save(request, **kwargs):
         title = re.sub(r"\s", "_", title.strip())
         entry = util.save_entry(title.strip(), str(content).strip())
         return redirect("wiki_entry", title=title)
-    return redirect("notfound")
+    return redirect(notFound)
 
 
 def update_entry(request, title=""):
@@ -131,7 +131,7 @@ def update_entry(request, title=""):
         if title:
             entry = util.get_entry(title)
             if not entry or entry is None:
-                return redirect("notfound")
+                return redirect(notFound)
             context["entry"] = entry
             context["config"] = "edit"
 
@@ -195,3 +195,7 @@ def delete_entry(request, title):
 
 def notFound(request):
     return render(request, "encyclopedia/notfound.html")
+
+
+def handler_404(request, exception):
+    return render(request, "encyclopedia/404.html")

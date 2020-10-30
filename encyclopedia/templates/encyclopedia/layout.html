@@ -22,9 +22,12 @@
 			crossorigin="anonymous"
 		/>
 		<link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet" />
+		<link href="{% static 'encyclopedia/404.css' %}" rel="stylesheet" />
+		{% block style %} {% endblock style %}
 	</head>
 
 	<body>
+		{% block body %}
 		<div class="row no-gutters">
 			<div class="sidebar col-lg-2 col-md-3">
 				<div class="side-container pt-3 px-2">
@@ -79,11 +82,12 @@
 			</div>
 
 			<div  class="main-container w-100">
-			{% block body %} 
+			{% block body_content %} 
 			{% endblock %}
 			</div>
 		</div>
 		</div>
+		{% endblock %}
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
   		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
