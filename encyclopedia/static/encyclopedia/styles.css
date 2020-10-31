@@ -164,7 +164,7 @@ ul li {
 	backface-visibility: hidden !important;
 	-webkit-overflow-scrolling: touch !important;
 	-webkit-transform: translate3d(0, 0, 0) !important;
-transform : translate3d(0, 0, 0) !important;
+	transform : translate3d(0, 0, 0) !important;
 
 	}
 
@@ -179,16 +179,40 @@ transform : translate3d(0, 0, 0) !important;
 @media screen and (max-width: 775px) {
 	.sidebar{
 		height: auto;
+		margin: 0;
+		padding:0;
+	}
+
+	#sidebar_nav{
+		padding: 10px 20px 2px 20px   !important ;
+		margin: 0 !important;
+		vertical-align: middle;
+		align-items: center;
+	}
+
+	#logo_wiki{
+		padding: 0;
+		margin: auto 0;
+		vertical-align: middle;
 	}
 	#logo_wiki a figure{
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content:center;
+		margin: 0;
+		padding: 0;
+	}
+#logo_wiki a figure img{
+		max-height:75px;
+		max-width: 75px;
+		margin-right: 25px;
+		margin: 0;
+		padding: 0;
 	}
 	#logo_wiki a figure figcaption .figure_text{
-		font-size: 6rem;
-		margin-left: 7px;
+		font-size: 3.5rem;
+		padding: 0;
 
 	}
  .list-responsive{
@@ -217,44 +241,47 @@ transform : translate3d(0, 0, 0) !important;
 		height: auto;
 	}
 
-#logo_wiki a figure {
-	margin: 0 0 10px 0;
-	padding: 0;
-	vertical-align: middle;
-	
-}
-#logo_wiki a figure img{
-		max-height:75px;
-		max-width: 75px;
-		margin-right: 15px;
-		margin: 0;
+	#sidebar_nav{
+	}
+	#logo_wiki a figure {
+		margin: 0 0 10px 0;
 		padding: 0;
+		vertical-align: middle;
+		
 	}
-	#logo_wiki a figure figcaption .figure_text{
-		font-size: 3.1rem;
-	}
-	
+	#logo_wiki a figure img{
+			max-height:75px;
+			max-width: 75px;
+			margin: 0;
+			padding: 10px 0;
+		}
+		#logo_wiki a figure figcaption .figure_text{
+			font-size: 2.1rem;
+			padding: 0;
 
-	
-	#wiki_search_btn::before{
-		content: "Entry";
-	}
-	.wiki_links{
-		display: flex;
-		flex-direction: column;
-	}
+		}
+		
 
-	/*change a-z list to vertical*/
-	#az_list{
-		position: relative;
-	}
-	 #az_list .dropdown-menu {
-		justify-content:center;
-		padding: 7px 10px;
-		max-height: 400px;
-		transform: translate3d(0px, 40px, 0px) !important; 
-		overflow: auto;
-	}
+		
+		#wiki_search_btn::before{
+			content: "Entry";
+		}
+		.wiki_links{
+			display: flex;
+			flex-direction: column;
+		}
+
+		/*change a-z list to vertical*/
+		#az_list{
+			position: relative;
+		}
+		#az_list .dropdown-menu {
+			justify-content:center;
+			padding: 7px 10px;
+			max-height: 400px;
+			transform: translate3d(0px, 40px, 0px) !important; 
+			overflow: auto;
+		}
 }
 
 /** ALL DEVICE EXCEPT DESKTOP**/
@@ -273,5 +300,18 @@ transform : translate3d(0, 0, 0) !important;
 		display: flex;
 		border: none;
 
+	}
+}
+/** ONLY DESKTOP**/
+@media screen and (min-width: 826px) {
+
+	#sidebar_nav{
+		display: block;
+		padding: 10px 5px  
+	}
+	#sidebar_nav #sidebar_btn{
+		/*javascript event listener on here do not remove */
+		display: none !important;
+		/* visibility: hidden !important;  */
 	}
 }
