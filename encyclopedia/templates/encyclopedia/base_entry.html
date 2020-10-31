@@ -2,11 +2,11 @@
 {% block title %} Encyclopedia {% endblock %}
 {% block body_content %}
 
-<section id="base_entry_section" class="px-3">
+<section id="base_entry_section">
 
 	<!-- Navigation control-->
-	<div id="entry_navbar" class="navigation header  align-items-center d-flex mt-2">
-		<ul class="nav-list  d-flex ml-3 pt-5">
+	<div id="entry_navbar" class="navigation header  align-items-center d-flex ">
+		<ul class="nav-list  d-flex ml-3 pt-lg-5 pt-md-2">
 			<!-- Home -->
 			<li class="nav-item">
 				<a class="link" href="{% url 'index' %}">
@@ -43,7 +43,7 @@
 	<!-- Navigation control-->
 
 	<!-- Entry Content -->
-	<div id="base_entry_content" class="entry-wrapper pl-md-3 pl-lg-3" style="overflow:auto">
+	<div id="base_entry_content" class="entry-wrapper px-3" style="overflow:auto">
 		<h1 class="title text-secondary font-weight-bolder">
 			{{title}}
 		</h1>
