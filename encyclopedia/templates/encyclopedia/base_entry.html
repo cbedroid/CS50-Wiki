@@ -1,58 +1,55 @@
-{% extends "encyclopedia/layout.html" %} 
-{% block title %} Encyclopedia {% endblock %} 
+{% extends "encyclopedia/layout.html" %}
+{% block title %} Encyclopedia {% endblock %}
 {% block body_content %}
-<section class="pl-lg-3">
-<div class="container">
-	<div class="row">
-		<div class="col-9">
-			<!-- Navigation control-->
-			<div class="navigation header  align-items-center d-flex mt-2">
-				<ul class="nav-list  d-flex ml-3 pt-5">
-					<!-- Home -->
-				<li class="nav-item">
-						<a class="link" href="{% url 'index' %}">
-							<button class="mx-2 btn px-4 btn-outline-success">
-								Home
-							</button>
-						</a>
-					</li>
-					<!-- Edit Entry-->
-					<li class="nav-item">
-						<a class="link" href="{% url 'update_entry' title %}">
-							<button class="btn btn-outline-warning">Edit Entry</button>
-						</a>
-					</li>
-					<!-- Delete Entry-->
-					<li class="nav-item">
-						<a class="link" href="{% url 'delete_entry' title %}">
-							<button id="delete_btn" class="btn btn-outline-danger">DeleteEntry</button>
-						</a>
-						{% verbatim  %}
-						<script>
-							document.getElementById('delete_btn').addEventListener('click',function(){
-									document.getElementById('deletion_modal').css.display ="block"
 
-							})
-						</script>
-						{% endverbatim  %}
+<section id="base_entry_section">
 
-					</li>
-					
-					
-				</ul>
-			</div>
-			<!-- Navigation control-->
-		</div>
+	<!-- Navigation control-->
+	<div id="entry_navbar" class="navigation header  align-items-center d-flex mt-2">
+		<ul class="nav-list  d-flex ml-3 pt-5">
+			<!-- Home -->
+			<li class="nav-item">
+				<a class="link" href="{% url 'index' %}">
+					<button class="mx-2 btn px-4 btn-outline-success">
+						Home
+					</button>
+				</a>
+			</li>
+			<!-- Edit Entry-->
+			<li class="nav-item">
+				<a class="link desk-ct-after" href="{% url 'update_entry' title %}">
+					<button class="btn btn-outline-warning">Edit</button>
+				</a>
+			</li>
+			<!-- Delete Entry-->
+			<li class="nav-item">
+				<a class="link desk-ct-after" href="{% url 'delete_entry' title %}">
+					<button id="delete_btn" class="btn btn-outline-danger">Delete</button>
+				</a>
+				{% verbatim  %}
+				<script>
+					document.getElementById('delete_btn').addEventListener('click', function () {
+						document.getElementById('deletion_modal').css.display = "block"
+
+					})
+				</script>
+				{% endverbatim  %}
+
+			</li>
+
+
+		</ul>
 	</div>
+	<!-- Navigation control-->
 
 	<!-- Entry Content -->
-	<div class="entry-wrapper" style="overflow:auto">
+	<div id="base_entry_content" class="entry-wrapper pl-md-3 pl-lg-3" style="overflow:auto">
 		<h1 class="title text-secondary font-weight-bolder">
-		{{title}}
+			{{title}}
 		</h1>
 		<hr class="mb-5">
-		<div class="content-container my-3 py-3">
-		{{ entry|safe }}
+		<div id="ei_content" class="content-container my-3 py-3">
+			{{ entry|safe }}
 		</div>
 	</div>
 	<!-- Entry Content -->
