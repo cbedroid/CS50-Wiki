@@ -2,10 +2,20 @@ import re
 import random
 import markdown2
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render as _render, redirect
 from django.contrib import messages
 from django.urls import reverse
+from functools import wraps
 from . import util
+
+
+def render(req, url, extra={}):
+    """
+    Hooking into render functionality and dynamically
+    making entries list available for all views
+    """
+    extra.update(entries_options=util.list_entries())
+    return _render(req, url, extra)
 
 
 def referred_message(req, url, msg, level="success"):
@@ -29,8 +39,6 @@ def index(request):
     entry_list = util.list_entries()
     if request.method == "POST":
         letter = request.POST.get("letter")
-        print("Letter", letter)
-        print("\nPOST", request.POST)
         if letter is not None:
             # map all letter and entry to lowercase
             letter = letter.strip().lower()
@@ -136,7 +144,6 @@ def update_entry(request, title=""):
         # Setup saving the entry
         action = "created" if "edit" in hidden else "updated"
         messages.success(request, f" Your entry was {action} successfully!")
-        print("\nCONTENT", content)
         return handler_save(request, title=title, content=content)
 
     else:  # GET Request
@@ -155,7 +162,6 @@ def update_entry(request, title=""):
                 "unavailable_entry": util.list_entries(),
             }
         )
-        print("\nCONTEXT", context)
     return render(request, "encyclopedia/create_edit_entry.html", context)
 
 
