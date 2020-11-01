@@ -1,14 +1,13 @@
 {% extends "encyclopedia/layout.html" %}
 {% block title %} Encyclopedia {% endblock %}
 {% block body_content %}
-<section id="index_section">
-	<div class="greeting-header text-center mt-2">
+<section id="index_section" class="bg-light border-left mt-n3">
+	<hr class="my-0">
+	<div class="greeting-header text-center">
 		<h1 class="ff_wiki font-weight-bolder text-dark">Welcome To Wiki</h1>
 		<p>The free encyclopedia that anyone can edit. </p>
 	</div>
-	<hr>
-	<div class="start-page px-3">
-		
+	<div class="start-page px-3 bg-white pt-2">
 		<h2>Wiki Pages</h2>
 		<div id="az_list" class="wiki-link-container">
 			<form id="alphabet_form" action="" method="POST">
