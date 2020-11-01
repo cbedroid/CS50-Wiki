@@ -19,6 +19,15 @@ urlpatterns = [
         views.create_update,
         name="create_update",
     ),
+<<<<<<< HEAD
+=======
+    re_path(
+        r"^delete-entry/(?P<title>)/?(?P<deletion>.*)/$",
+        views.delete_entry,
+        name="delete_entry",
+    ),
+    path("delete-entry/<title>/<deletion>", views.delete_entry, name="delete_entry"),
+>>>>>>> eda04940b627abfdf6f130749c0d08e44ed86f63
     path("delete-entry/<title>", views.delete_entry, name="delete_entry"),
     path("random-entry/", views.random_entry, name="random_entry"),
     re_path(r"^page-not-found/$", views.notFound, name="notFound"),
