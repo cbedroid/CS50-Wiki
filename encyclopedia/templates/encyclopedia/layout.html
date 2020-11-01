@@ -18,6 +18,7 @@
 	</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@700&display=swap" rel="stylesheet">
 	<link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet" />
 	<link href="{% static 'encyclopedia/404.css' %}" rel="stylesheet" />
 	{% block style %} {% endblock style %}
@@ -35,7 +36,7 @@
 								src="https://user-images.githubusercontent.com/54720725/97774007-c1dd1500-1b2a-11eb-98a4-a05ae60f3cba.png"
 								alt="wiki image logo" class="logo_img figure-img img-fluid rounded">
 							<figcaption class="figure-caption font-weight-bold text-center">
-								<h4 class="figure_text">Wiki</h4>
+								<h4 class="ff_wiki figure_text">Wiki</h4>
 							</figcaption>
 						</figure>
 					</a>
@@ -71,7 +72,7 @@
 						</li>
 						<ul id="alt_nav_list" class="nav-list d-flex flex-row flex-md-column ">
 							<li class="nav-item"><a class="nav-link text-primary" href="{% url 'index' %}">Home</a></li>
-							<li class="nav-item"><a class="nav-link text-primary" href="{% url 'update_entry' %}">Create New Page</a>
+							<li class="nav-item"><a class="nav-link text-primary" href="{% url 'create_update' %}">Create New Page</a>
 							</li>
 							<li class="nav-item"><a class="nav-link text-primary" href="{% url 'random_entry' %}">Random Page</a></li>
 						</ul>
@@ -118,7 +119,7 @@
 				{% block nav %}
 				<ul class="nav flex-row list-responsive">
 					<li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="{% url 'update_entry' %}">Create New Page</a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'create_update' %}">Create New Page</a></li>
 					<li class="nav-item"><a class="nav-link" href="{% url 'random_entry' %}">Random Page</a></li>
 				</ul>
 				{% endblock %}

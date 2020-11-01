@@ -87,7 +87,7 @@ def wiki_search(request, search):
     return wiki_entry(request, title=search)
 
 
-def handler_save(request, **kwargs):
+def saveHandler(request, **kwargs):
     """Save Entry
 
     Arguments:
@@ -106,8 +106,8 @@ def handler_save(request, **kwargs):
     return redirect(notFound)
 
 
-def update_entry(request, title=""):
-    """Update Wiki entry
+def create_update(request, title=""):
+    """Creates or updates wiki entry
 
     Arguments:
         request {obj} -- Django request
@@ -144,10 +144,10 @@ def update_entry(request, title=""):
         # Setup saving the entry
         action = "created" if "edit" in hidden else "updated"
         messages.success(request, f" Your entry was {action} successfully!")
-        return handler_save(request, title=title, content=content)
+        return saveHandler(request, title=title, content=content)
 
     else:  # GET Request
-        context = {}
+        context = {"config": "create"}  # default value
         if title:
             entry = util.get_entry(title)
             if not entry or entry is None:
@@ -184,7 +184,7 @@ def random_entry(request):
     return redirect(index)
 
 
-def delete_entry(request, title):
+def delete_entry(request, title, deletion=None):
     """Delete Wiki entry
 
     Arguments:
@@ -196,15 +196,17 @@ def delete_entry(request, title):
     """
 
     context = {}
-    if request.method == "POST":
-        deletion = request.POST.get("deletion")
-
+    if deletion:
+        print(f"\nDELETING Title: {title} Deletion: {deletion}")
         if title:
-            if deletion == "yes":
+            if deletion == "delete":
+
                 util.delete_entry(title)
                 messages.error(request, f"{title} was deleted.")
+                print("Deleting it ")
                 return redirect("index")
             else:
+                print("Cancel deleting it ")
                 messages.warning(request, f"Deleting was cancel {title}.")
                 return redirect("wiki_entry", title=title)
 
