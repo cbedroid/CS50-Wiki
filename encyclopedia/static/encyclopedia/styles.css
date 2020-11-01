@@ -9,11 +9,14 @@ html,body {
 body{
 	height: 100vh;
 	width: 100vw;
-	font-family: sans-serif;
 
 }
 .ff_wiki{
 		font-family: 'Cormorant', serif;
+}
+
+#index_section{
+	font-family: sans-serif;
 }
 
 .main-container{
@@ -246,6 +249,8 @@ ul li {
 		height: auto;
 	}
 
+	#sidebar_nav{
+	}
 	#logo_wiki a figure {
 		margin: 0 0 10px 0;
 		padding: 0;
