@@ -3,11 +3,13 @@
 {% block body_content %}
 <section>
 	<div class="greeting-header text-center mt-2">
-		<h1 class="title font-weight-bolder text-secondary">Welcome To Wiki</h1>
+		<h1 class="ff_wiki font-weight-bolder text-dark">Welcome To Wiki</h1>
+		<p>The free encyclopedia that anyone can edit. </p>
 	</div>
 	<hr>
 	<div class="start-page px-3">
-		<h1>Wiki Pages</h1>
+		
+		<h2>Wiki Pages</h2>
 		<div id="az_list" class="wiki-link-container">
 			<form id="alphabet_form" action="" method="POST">
 				{% csrf_token %}
@@ -51,15 +53,14 @@
 		</div>
 
 		{# All avaialble Enties #}
-
 		<div id="spinner" class="invisible  position-fixed mh-100 mw-50 h-100 w-50 ">
 			<img
 				src="https://icon-library.com/images/loading-icon-transparent-background/loading-icon-transparent-background-12.jpg"
 				alt="loading-spinner" class="d-block  w-25 mw-25 mh-25">
 		</div>
 		<div class="entry-content">
-			<h5 class="font-weight-100">Available Entry -
-				<span class="badge badge-secondary ">{{entries|length}}</s>
+			<h5 class="font-weight-bold">Available Entry -
+				<span class="badge badge-secondary px-2">{{entries|length}}</s>
 			</h5>
 			<ul>
 				{% for entry in entries %}

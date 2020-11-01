@@ -17,7 +17,7 @@
 			</li>
 			<!-- Edit Entry-->
 			<li class="nav-item">
-				<a class="link desk-ct-after" href="{% url 'update_entry' title %}">
+				<a class="link desk-ct-after" href="{% url 'create_update' title %}">
 					<button class="btn btn-outline-warning">Edit</button>
 				</a>
 			</li>
@@ -36,8 +36,6 @@
 				{% endverbatim  %}
 
 			</li>
-
-
 		</ul>
 	</div>
 	<!-- Navigation control-->
@@ -47,7 +45,7 @@
 		<h1 class="title text-secondary font-weight-bolder">
 			{{title}}
 		</h1>
-		<hr class="mb-5">
+		<hr class="my-n2">
 		<div id="ei_content" class="content-container my-3 py-3">
 			{{ entry|safe }}
 		</div>
