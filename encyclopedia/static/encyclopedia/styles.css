@@ -11,6 +11,7 @@ body{
 	width: 100vw;
 
 }
+
 .ff_wiki{
 		font-family: 'Cormorant', serif;
 }
@@ -24,6 +25,7 @@ body{
 	max-height: 100%;
 	/*overflow:hidden;*/
 }
+
 code {
 	white-space: pre;
 }
@@ -191,7 +193,7 @@ ul li {
 	}
 
 	#sidebar_nav{
-		padding: 10px 20px 2px 20px   !important ;
+		padding: 10px 20px 8px 20px   !important ;
 		margin: 0 !important;
 		vertical-align: middle;
 		align-items: center;
@@ -249,8 +251,6 @@ ul li {
 		height: auto;
 	}
 
-	#sidebar_nav{
-	}
 	#logo_wiki a figure {
 		margin: 0 0 10px 0;
 		padding: 0;
@@ -268,8 +268,6 @@ ul li {
 			padding: 0;
 
 		}
-		
-
 		
 		#wiki_search_btn::before{
 			content: "Entry";
