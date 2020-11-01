@@ -1,6 +1,8 @@
 **PyDatpiff**   -   🎶 Unofficial [Datpiff](https://www.datpiff.com) Music Application. Play and download the latest Hip-Hop and RnB songs.
 
-## What is Pydatpiff and Why should I care
+<img src="https://user-images.githubusercontent.com/54720725/96840060-f872ab80-1417-11eb-93ac-c964217b98b1.png"  width="90%" height="200">
+
+## What is Pydatpiff and How Can Use It
 
 **Pydatpiff** is a Free open-sourced music streaming service that give you access to millions of songs and content from your favorite music artists. With a wide variety of songs from latest Hip-Hop, RnB, Pop to the the Old School music from 70's, 80's, 90's and 2000's. 
  

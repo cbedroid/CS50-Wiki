@@ -15,7 +15,7 @@ urlpatterns = [
         name="create_update",
     ),
     re_path(
-        r"^update-entry/?/(?P<title>[a-zA-Z1-9]+)/$",
+        r"^update-entry/?/(?P<title>.*\s*)/$",
         views.create_update,
         name="create_update",
     ),
