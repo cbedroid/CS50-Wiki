@@ -100,7 +100,8 @@ def saveHandler(request, **kwargs):
     title = kwargs.get("title", "")
     content = kwargs.get("content", "")
     if content and title:
-        title = re.sub(r"\s", "_", title.strip())
+        title = title.strip()
+        # re.sub(r"\s", "_", title.strip())
         entry = util.save_entry(title.strip(), str(content).strip())
         return redirect("wiki_entry", title=title)
     return redirect(notFound)
