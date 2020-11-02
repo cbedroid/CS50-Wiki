@@ -28,7 +28,7 @@
 								{% endif %}
 							</label><br />
 							<div class="entry-title d-flex align-middle align-items-center">
-								<input class="px-2" id="title" type="text" name="title" value="{{title|safe}}" />
+								<input class="px-2" id="title" type="text" name="title" value="{{title|safe}}" required/>
 								{{ unavailable_entry|json_script:"unavailable_entry" }}
 								<p id="entry_validator" data-config="{{config}}" class="m-2 p-1 px-3 font-weight-bold"> </p>
 							</div>
@@ -43,7 +43,7 @@
 								{% endif %}
 							</label><br />
 							<textarea class="px-2 shadow-sm  my-2" style="height: auto" name="content" id="content" rows="10"
-								value="{{ entry|safe }}" required>{{entry}} </textarea>
+							required>{{entry|safe}}</textarea>
 						</div>
 						<!--SUBMIT BUTTONS -->
 						<div class="navigation header align-items-center d-flex">

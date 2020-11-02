@@ -116,6 +116,7 @@ def create_update(request, title=""):
     """
 
     context = {"config": "create"}
+    previous_title = title
     if request.method == "POST":
         title = request.POST.get("title", "").strip()
         content = request.POST.get("content", "").strip()
@@ -140,7 +141,10 @@ def create_update(request, title=""):
             return render(request, "encyclopedia/create_edit_entry.html", context)
 
         # Setup saving the entry
-        action = "created" if "edit" in hidden else "updated"
+        action = "updated" if "edit" in hidden else "created"
+        if action == "updated":
+            # delete previous entry
+            util.delete_entry(previous_title)
         messages.success(request, f" Your entry was {action} successfully!")
         return saveHandler(request, title=title, content=content)
 
@@ -195,16 +199,13 @@ def delete_entry(request, title, deletion=None):
 
     context = {}
     if deletion:
-        print(f"\nDELETING Title: {title} Deletion: {deletion}")
         if title:
             if deletion == "delete":
 
                 util.delete_entry(title)
                 messages.error(request, f"{title} was deleted.")
-                print("Deleting it ")
                 return redirect("index")
             else:
-                print("Cancel deleting it ")
                 messages.warning(request, f"Deleting was cancel {title}.")
                 return redirect("wiki_entry", title=title)
 
