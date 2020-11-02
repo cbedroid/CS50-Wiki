@@ -83,7 +83,6 @@
 			</nav>
 		</div>
 
-
 		<div class="main col-lg-9 col-md-8">
 			<!-- Django alert message -->
 			<div class="message-wrapper w-100 z-100 position-absolute">
@@ -97,7 +96,6 @@
 							<div class="alert alert-{{message.tags}} alert-dismissible fade show py-2" id="alert_message"
 								role="alert">
 								{% endif %}
-
 								{{ message }}
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
@@ -108,7 +106,6 @@
 				</ul>
 				{% endif %}
 			</div>
-
 			<div class="main-container w-100">
 				{% block body_content %}
 				{% endblock %}
