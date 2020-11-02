@@ -15,16 +15,16 @@ if not SECRET_KEY:
     raise TypeError("Invalid or Missing Secret Key")
 
 
-Production = (os.environ.get("WIKI_DEBUG") == "True")
 
-DEBUG = Production
+DEBUG = (os.environ.get("WIKI_DEBUG") == "True")
+
+Production = not DEBUG
+
 
 if Production:
     ALLOW_HOST = ["cbedroid-wiki.herokuapp.com"]
 else:  # Development
-    ALLOWED_HOSTS = [
-        "127.0.0.1",
-    ]
+    ALLOWED_HOSTS = [ ]
 
 
 # Application definition
