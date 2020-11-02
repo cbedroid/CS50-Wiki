@@ -7,8 +7,6 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("wiki/<str:title>/", views.wiki_entry, name="wiki_entry"),
     re_path(r"^wiki/(?P<title>).*[\s\w]*/$", views.wiki_entry, name="wiki_entry"),
-    path("search/", views.wiki_search, name="wiki_search"),
-    re_path(r"^wiki/(?P<search>).*[\w]*$", views.wiki_search, name="wiki_search"),
     re_path(
         r"^update-entry/$",
         views.create_update,

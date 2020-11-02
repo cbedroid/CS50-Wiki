@@ -14,7 +14,8 @@ def render(req, url, extra={}):
     Hooking into render functionality and dynamically
     making entries list available for all views
     """
-    extra.update(entries_options=util.list_entries())
+    alphabet_list = list(map(chr, range(65, 65 + 26)))
+    extra.update(entries_options=util.list_entries(), alphabet_list=alphabet_list)
     return _render(req, url, extra)
 
 
@@ -39,15 +40,28 @@ def index(request):
     entry_list = util.list_entries()
     if request.method == "POST":
         letter = request.POST.get("letter")
-        if letter is not None:
+        search = request.POST.get("search")
+        # Handles searches from index sidebar
+        if search is not None:
+            search = search.lower().strip()
+            for entry in entry_list:
+                if search == entry.lower():
+                    return redirect("wiki_entry", title=entry)
+
+            entry_list = list(filter(lambda x: search in x.lower(), entry_list))
+            if not entry_list:
+                return redirect(notFound)
+
+        # Handles A-Z sorted list in index main
+        elif letter is not None:
             # map all letter and entry to lowercase
             letter = letter.strip().lower()
             # filter by entries starting with "letter"
             entry_list = list(
                 filter(lambda x: x.lower().startswith(letter), entry_list)
             )
-    alphabet_list = list(map(chr, range(65, 65 + 26)))
-    context = {"entries": entry_list, "alphabet_list": alphabet_list}
+
+    context = {"entries": entry_list}
     return render(request, "encyclopedia/index.html", context)
 
 
@@ -68,23 +82,6 @@ def wiki_entry(request, title):
     context["title"] = title
     context["entry"] = markdown2.markdown(entry).strip()
     return render(request, "encyclopedia/base_entry.html", context)
-
-
-def wiki_search(request, search):
-    """Wiki  side search bar
-
-    Arguments:
-        request {obj} -- Django request
-        search {str} --  Name of entry to search for
-
-    Returns:
-        [Django view] -- rendered view template   'search/'
-    """
-    search = request.GET.get("search")
-    if not search:
-        return redirect(notFound)
-
-    return wiki_entry(request, title=search)
 
 
 def saveHandler(request, **kwargs):
