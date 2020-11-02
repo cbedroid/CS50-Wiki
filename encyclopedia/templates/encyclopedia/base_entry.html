@@ -22,6 +22,7 @@
 				</a>
 			</li>
 			<!-- Delete Entry-->
+			{% if debug %}
 			<li class="nav-item">
 				<a class="link desk-ct-after" href="{% url 'delete_entry' title %}">
 					<button id="delete_btn" class="btn btn-outline-danger">Delete</button>
@@ -34,8 +35,8 @@
 					})
 				</script>
 				{% endverbatim  %}
-
 			</li>
+			{% endif %}
 		</ul>
 	</div>
 	<!-- Navigation control-->

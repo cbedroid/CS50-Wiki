@@ -1,6 +1,7 @@
 import re
 import random
 import markdown2
+from django.conf import settings
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render as _render, redirect
 from django.contrib import messages
@@ -15,7 +16,10 @@ def render(req, url, extra={}):
     making entries list available for all views
     """
     alphabet_list = list(map(chr, range(65, 65 + 26)))
-    extra.update(entries_options=util.list_entries(), alphabet_list=alphabet_list)
+    extra.update(entries_options=util.list_entries(), 
+    alphabet_list=alphabet_list,
+    debug=settings.DEBUG)
+
     return _render(req, url, extra)
 
 
@@ -201,7 +205,6 @@ def delete_entry(request, title, deletion=None):
     if deletion:
         if title:
             if deletion == "delete":
-
                 util.delete_entry(title)
                 messages.error(request, f"{title} was deleted.")
                 return redirect("index")
