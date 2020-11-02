@@ -40,7 +40,7 @@ $(document).ready(() => {
     if (sbd && sbd.display === "none") {
       $('#sidebar_nav_menu').removeClass('collapse').addClass('expanded');
     } else {
+      $('#sidebar_nav_menu').removeClass('expanded').addClass('collapse');
     }
-  } else {
   }
 })

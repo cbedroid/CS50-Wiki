@@ -49,17 +49,20 @@
 				<div class="collapse navbar-collapse pt-3 px-2" id="sidebar_nav_menu">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
-							<form class="search-form" action="/wiki" method="GET">
+							<form class="search-form" action="/" method="POST">
+								{% csrf_token %}
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
 										<button id="wiki_search_btn" class="btn btn-secondary dropdown-toggle mobile-block"
 											type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+											<!-- Search dropdown links-->
 										<div id="search_dropdown" class="dropdown-menu bg-dark position-absolute">
 											{% for entry_item in entries_options  %}
 											<a class="dropdown-item bg-dark text-light" href="#">{{entry_item}}</a>
 											{% endfor %}
 										</div>
 									</div>
+									<!--Search bar-->
 									<input type="text" class="search form-control" list="wiki-list" placeholder="Search Encyclopedia"
 										name="search" aria-label="entry search bar">
 									<datalist id="wiki-list">
@@ -81,50 +84,6 @@
 		</div>
 
 
-		{% comment %}
-		<div class="index sidebar col-lg-2 col-md-3">
-			<div class="pt-3 px-2">
-				<div id="logo_wiki">
-					<a class="wiki-home text-dark text-decoration-none" href="{% url 'index' %}">
-						<figure class="figure text-center">
-							<img
-								src="https://user-images.githubusercontent.com/54720725/97774007-c1dd1500-1b2a-11eb-98a4-a05ae60f3cba.png"
-								alt="wiki image logo" class="logo_img figure-img img-fluid rounded">
-							<figcaption class="figure-caption font-weight-bold text-center">
-								<h4 class="figure_text">Wiki</h4>
-							</figcaption>
-						</figure>
-					</a>
-				</div>
-				<form class="search-form" action="/wiki" method="GET">
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<button id="wiki_search_btn" class="btn btn-outline-secondary dropdown-toggle mobile-block" type="button"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-							<div class="dropdown-menu">
-								{% for entry_item in entries_options  %}
-								<a class="dropdown-item" href="#">{{entry_item}}</a>
-								{% endfor %}
-							</div>
-						</div>
-						<input type="text" class="search form-control" list="wiki-list" placeholder="Search Encyclopedia"
-							name="search" aria-label="entry search bar">
-						<datalist id="wiki-list">
-							{% for entry in entries_options %}
-							<option value="{{entry|safe}}"></option>
-							{% endfor %}
-						</datalist>
-					</div>
-				</form>
-				{% block nav %}
-				<ul class="nav flex-row list-responsive">
-					<li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="{% url 'create_update' %}">Create New Page</a></li>
-					<li class="nav-item"><a class="nav-link" href="{% url 'random_entry' %}">Random Page</a></li>
-				</ul>
-				{% endblock %}
-			</div>
-		</div> {% endcomment %}
 		<div class="main col-lg-9 col-md-8">
 			<!-- Django alert message -->
 			<div class="message-wrapper w-100 z-100 position-absolute">
