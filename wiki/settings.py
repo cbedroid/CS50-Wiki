@@ -5,24 +5,21 @@ import mimetypes
 import django_heroku
 from dotenv import load_dotenv
 
-load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+load_dotenv()
 
 
-SECRET_KEY = os.environ.get("WIKI_SECRET_KEY")
+SECRET_KEY = os.getenv("WIKI_SECRET_KEY")
 if not SECRET_KEY:
     raise TypeError("Invalid or Missing Secret Key")
 
 
-
-DEBUG = (os.environ.get("WIKI_DEBUG") == "True")
-
+DEBUG = (os.getenv("WIKI_DEBUG") == "True")
 Production = not DEBUG
 
-
 if Production:
-    ALLOW_HOST = ["cbedroid-wiki.herokuapp.com"]
+    ALLOWED_HOSTS = ["cbedroid-wiki.herokuapp.com"]
 else:  # Development
     ALLOWED_HOSTS = [ ]
 
@@ -78,10 +75,10 @@ if Production:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.environ.get("WIKI_DB_NAME"),
-            "USER": os.environ.get("WIKI_DB_USER"),
-            "PASSWORD": os.environ.get("WIKI_DB_PASSWORD"),
-            "HOST": os.environ.get("WIKI_DB_HOST"),
+            "NAME": os.getenv("WIKI_DB_NAME"),
+            "USER": os.getenv("WIKI_DB_USER"),
+            "PASSWORD": os.getenv("WIKI_DB_PASSWORD"),
+            "HOST": os.getenv("WIKI_DB_HOST"),
             "PORT": "5432",
         }
     }
