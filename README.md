@@ -26,7 +26,7 @@ This Wiki thing.. is an online encyclopedia much like [**Wikipedia**](https://ww
 
 ---
 # TechStack
-Here are some of the tool used in this project.
+Here are some of the tools used in this project.
 - Python
 - Django
 - HTML
