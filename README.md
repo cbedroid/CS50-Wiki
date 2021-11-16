@@ -1,23 +1,25 @@
 
 # CS50 Wiki
 
-**Wiki** - Wikipedia-like online encyclopedia
+<div style="display:flex;flex-direction:row; justify-content; space-between;width:100%"> 
+ <h3><b>Wiki</b> - Wikipedia-like online encyclopedia</h3>
+  <h3>:rocket: <a  target="_blank" href="https://cbedroid-wiki.herokuapp.com"> Run Wiki Live </a></h3>  
+</div>
 
-
-Hello :wave: and welcome to my [**Harvard University CS50 Wiki Project**](https://online-learning.harvard.edu/course/cs50s-web-programming-python-and-javascript?delta=0). Feel free to roam around and checkout some of the cool features in this repository. In this project, our class was instructed to create a similiar clone website like **Wikipedia**  named **Wiki** using **Python's Django Framework**.  
+Welcome to my [**Harvard University CS50 Wiki Project**](https://online-learning.harvard.edu/course/cs50s-web-programming-python-and-javascript?delta=0). I invite you to explore this repository and check out some of the cool features. In our project, our class was instructed to created a similar clone website to **Wikipedia** called **Wiki** using **Python's Django framework**.
 
 For details on the `Specification` for this project, Please take a look at the [**Specification**](#specification) section below.
 
 
-### :rocket: Run [Wiki Live Demo](https://cbedroid-wiki.herokuapp.com/)
+##
 
 # Introduction
 
  ## So..what is this Wiki thing you keep babbling about :thinking: ?
 
-  This **Wiki** thing.. is a `wikipedia-like` online encyclopedia that consists of numerous interesting encyclopedia entries on various different topic. [Wikipedia](https://wikipedia.org) is open-sourced allowing any volunteer to created and edited its entries. It's the 15 most popular website in the world .... oh yeah.. did I mention, Its also **FREE**. 
+This Wiki thing.. is an online encyclopedia much like [**Wikipedia**](https://www.wikipedia.org/). It contains numerous interesting articles about different topics. It's open-sourced so anyone can create and edit its entries. It's the 15th most popular website in the world. Oh yeah, did I mention it's **FREE**.
 
-  In this assignment, our class had the task of creating a similiar website like Wikipedia and implement some of its original functionalities. One of the ***main feature*** we were asked to implement was the [`WikiText`](https://en.wikipedia.org/wiki/Help:Wikitext) syntax, a markup language used to create entries for Wikipedia. But instead of solely designing and building this website using `HTML`, `CSS`, and `JavaScript`, we had to also create our on *`WikiText`* syntax using [`Github's Markdown`](https://docs.github.com/en/free-pro-team@latest/github/writing-on-github/basic-writing-and-formatting-syntax) along with creating Wiki entries for this website.
+ In this project, our class was asked to design a similar website like Wikipedia and implement many of its original features. One of the most prominent features of this assignment was the use of [**`WikiText`**](https://en.wikipedia.org/wiki/Help:Wikitext), the markup language used to create entries on Wikipedia. In addition to building this website using `HTML`, `CSS`, and `JavaScript`, we had to make our own *`WikiText`* syntax using [**`Github's Markdown`**](https://docs.github.com/en/free-pro-team@latest/github/writing-on-github/basic-writing-and-formatting-syntax)  along with creating Wiki entries for your website.
 
 *For full detail description of CS50 Wiki, visit:* [**CS50 Wiki Full Description**](https://cs50.harvard.edu/web/2020/projects/1/wiki/#:~:text=web50/projects/2020/x/wiki)
 
@@ -34,8 +36,8 @@ Here are some of the tool used in this project.
 ---
 
 # Prerequisites
-- [Python](https://www.python.org) >= 3.6
-- [Django](https://www.djangoproject.com/download/) >= 3.1.2
+- [**Python**](https://www.python.org) >= 3.6
+- [**Django**](https://www.djangoproject.com/download/) >= 3.1.2
 
 # Setup
 
@@ -129,4 +131,4 @@ Random Page: Clicking “Random Page” in the sidebar should take user to a ran
 
 - For more projects - [Github](https://github.com/cbedroid)
 
-- Follow me on Twitter- [Follow me](https://twitter.com/cbedroid)
+- Follow me on Twitter - [Follow me](https://twitter.com/cbedroid)
